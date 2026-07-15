@@ -26,11 +26,11 @@ function thumbnailTemplate(work, client, index) {
   }
 
   return `
-    <div class="thumb-placeholder" aria-label="Espacio para subir miniatura">
+    <div class="thumb-placeholder" aria-label="Proyecto seleccionado de ${client.name}">
       <span>${initials(client.name)}</span>
       <strong>${String(index + 1).padStart(2, "0")}</strong>
-      <small>Espacio para miniatura</small>
-      <em>${work.thumbnailHint}</em>
+      <small>Proyecto seleccionado</small>
+      <em>${work.type} · ${client.name}</em>
     </div>
   `;
 }
@@ -66,7 +66,7 @@ function renderProjects() {
                   </div>
                   <h3>${work.title}</h3>
                   <a class="work-link" href="${work.url}" target="_blank" rel="noopener">
-                    Ver post original <span aria-hidden="true">↗</span>
+                    Ver publicación <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </article>
