@@ -41,6 +41,12 @@ function renderClientNav() {
     .join("");
 }
 
+function workLinkLabel(work) {
+  if (work.type === "Video") return "Ver video";
+  if (work.url.startsWith("assets/")) return "Ver diseño";
+  return "Ver publicación";
+}
+
 function renderProjects() {
   grid.innerHTML = clients
     .map((client) => `
@@ -50,7 +56,7 @@ function renderProjects() {
             <p class="eyebrow">Cliente</p>
             <h2>${client.name}</h2>
           </div>
-          <span>${client.works.length} trabajos</span>
+          <span>${client.period ? `${client.period} · ` : ""}${client.works.length} trabajos</span>
         </div>
         <div class="client-work-grid">
           ${client.works
@@ -66,7 +72,7 @@ function renderProjects() {
                   </div>
                   <h3>${work.title}</h3>
                   <a class="work-link" href="${work.url}" target="_blank" rel="noopener">
-                    Ver publicación <span aria-hidden="true">↗</span>
+                    ${workLinkLabel(work)} <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </article>
